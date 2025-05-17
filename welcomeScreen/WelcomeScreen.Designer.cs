@@ -28,29 +28,9 @@ partial class WelcomeScreen : Form
     /// </summary>
     private void InitializeComponent()
     {
-        label1 = new Label();
-        changeUser = new Button();
         createUser = new Button();
         start = new Button();
         SuspendLayout();
-        // 
-        // label1
-        // 
-        label1.AutoSize = true;
-        label1.Location = new Point(352, 202);
-        label1.Name = "label1";
-        label1.Size = new Size(38, 15);
-        label1.TabIndex = 1;
-        label1.Text = "label1";
-        // 
-        // changeUser
-        // 
-        changeUser.Location = new Point(336, 302);
-        changeUser.Name = "changeUser";
-        changeUser.Size = new Size(89, 27);
-        changeUser.TabIndex = 2;
-        changeUser.Text = "Change user";
-        changeUser.UseVisualStyleBackColor = true;
         // 
         // createUser
         // 
@@ -70,6 +50,7 @@ partial class WelcomeScreen : Form
         start.TabIndex = 4;
         start.Text = "Enter";
         start.UseVisualStyleBackColor = true;
+        start.Click += start_Click;
         // 
         // WelcomeScreen
         // 
@@ -78,17 +59,12 @@ partial class WelcomeScreen : Form
         ClientSize = new Size(800, 450);
         Controls.Add(start);
         Controls.Add(createUser);
-        Controls.Add(changeUser);
-        Controls.Add(label1);
         Name = "WelcomeScreen";
         Text = "Form1";
         ResumeLayout(false);
-        PerformLayout();
     }
 
     #endregion
-    private Label label1;
-    private Button changeUser;
     private Button createUser;
     private Button start;
 }

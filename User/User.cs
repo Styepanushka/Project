@@ -1,32 +1,33 @@
 ﻿namespace Project.User;
 
-using System;
-
-internal class User
+public class User
 {
-    private string _name;
-    private string _password;
-
-    private class SemicolonError : Exception
-    {
-        public SemicolonError() : base("No ; in name or password")
-        {
-
-        }
-    }
+    public string Name { get; }
+    public string Password { get; }
 
     public User(string name, string password)
     {
-        if(name.Contains(';') || password.Contains(';'))
-        {
-            throw new SemicolonError();
-        }
-        _name = name;
-        _password = password;
+        Name = name;
+        Password = password;
+    }
+
+    public override bool Equals(object obj)
+    {
+        if (obj is not User other)
+            return false;
+
+        return string.Equals(Name, other.Name, StringComparison.OrdinalIgnoreCase) &&
+               Password == other.Password;
+    }
+
+    public override int GetHashCode()
+    {
+        // Используем хэш-код с учётом регистра имени и пароля
+        return HashCode.Combine(Name.ToLowerInvariant(), Password);
     }
 
     public override string ToString()
     {
-        return _name + ';' + _password;
+        return $"{Name};{Password}";
     }
 }
