@@ -27,16 +27,15 @@ public class MyContext : ApplicationContext
 
     private void FormClosingHandler(object? sender, FormClosingEventArgs e)
     {
-        if(_current != State.OnWelcomeScreen) return;
-        if((sender as WelcomeScreen).User != null)
+        if((sender as WelcomeScreen).User == null)
         {
-            _user = (sender as WelcomeScreen).User;
-            _current = State.OnMainScreen;
-            Form1 main_form = new Form1();
-            main_form.Show();
-            main_form.FormClosed += (o, e) => ExitThread();
+            ExitThread();
             return;
         }
-        ExitThread();
+        _user = (sender as WelcomeScreen).User;
+        _current = State.OnMainScreen;
+        Form1 main_form = new Form1();
+        main_form.Show();
+        main_form.FormClosed += (o, e) => ExitThread();
     }
 }

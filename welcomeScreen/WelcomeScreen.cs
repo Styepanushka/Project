@@ -59,6 +59,8 @@ public partial class WelcomeScreen : Form
 
     private void OpenMain(object o, EventArgs e)
     {
+        if ((o as userDialog).User is null)
+            return;
         User = (o as userDialog).User;
         Close();
     }

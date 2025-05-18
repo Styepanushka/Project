@@ -6,8 +6,6 @@ using userDialog;
 
 public partial class userCreateDialog : userDialog
 {
-    public User User { get; private set; }
-
     public userCreateDialog()
     {
         InitializeComponent();
@@ -22,11 +20,13 @@ public partial class userCreateDialog : userDialog
     {
         if (string.IsNullOrWhiteSpace(textBox1.Text))
         {
-            throw new ArgumentException("Name can't be empty");
+            MessageBox.Show("Name can't be empty");
+            return;
         }
         if (string.IsNullOrWhiteSpace(textBox2.Text))
         {
-            throw new ArgumentException("Password can't be empty");
+            MessageBox.Show("Password can't be empty");
+            return;
         }
 
         FileWork users_file = new FileWork("Users.txt");
@@ -52,7 +52,8 @@ public partial class userCreateDialog : userDialog
         }
 
         users_file.Write(u.ToString() + "\n");
+        User = u;
+
         Close();
-        this.User = u;
     }
 }
