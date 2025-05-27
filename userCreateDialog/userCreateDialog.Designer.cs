@@ -32,59 +32,43 @@ partial class userCreateDialog : userDialog
     {
         SuspendLayout();
         // 
-        // textBox1
+        // button1
         // 
-        textBox1.Location = new Point(78, 12);
-        textBox1.Name = "textBox1";
-        textBox1.Size = new Size(100, 23);
-        textBox1.TabIndex = 0;
+        button1.Location = new Point(105, 84);
+        button1.TabIndex = 4;
+        button1.Text = "Подтвердить";
+        button1.Click += button1_Click;
         // 
-        // label1
+        // label2
         // 
-        label1.AutoSize = true;
-        label1.Location = new Point(14, 12);
-        label1.Name = "label1";
-        label1.Size = new Size(39, 15);
-        label1.TabIndex = 1;
-        label1.Text = "Name";
-        label1.Click += label1_Click;
+        label2.Location = new Point(14, 55);
+        label2.Size = new Size(49, 15);
+        label2.TabIndex = 3;
+        label2.Text = "Пароль";
         // 
         // textBox2
         // 
         textBox2.Location = new Point(78, 55);
-        textBox2.Name = "textBox2";
-        textBox2.Size = new Size(100, 23);
         textBox2.TabIndex = 2;
         // 
-        // label2
+        // label1
         // 
-        label2.AutoSize = true;
-        label2.Location = new Point(14, 55);
-        label2.Name = "label2";
-        label2.Size = new Size(57, 15);
-        label2.TabIndex = 3;
-        label2.Text = "Password";
+        label1.Location = new Point(14, 12);
+        label1.Size = new Size(31, 15);
+        label1.TabIndex = 1;
+        label1.Text = "Имя";
+        label1.Click += label1_Click;
         // 
-        // button1
+        // textBox1
         // 
-        button1.Location = new Point(105, 84);
-        button1.Name = "button1";
-        button1.Size = new Size(73, 29);
-        button1.TabIndex = 4;
-        button1.Text = "Confirm";
-        button1.UseVisualStyleBackColor = true;
-        button1.Click += button1_Click;
+        textBox1.Location = new Point(78, 12);
+        textBox1.TabIndex = 0;
         // 
         // userCreateDialog
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(210, 116);
-        Controls.Add(button1);
-        Controls.Add(label2);
-        Controls.Add(textBox2);
-        Controls.Add(label1);
-        Controls.Add(textBox1);
         FormBorderStyle = FormBorderStyle.FixedDialog;
         Name = "userCreateDialog";
         Text = "userCreateDialog";

@@ -3,6 +3,10 @@
 using Project.WelcomeScreen;
 using Project.mainScreen;
 using Project.User;
+using System.Text.Json;
+using LibrarySim.FileWork;
+using System.Data;
+using Newtonsoft.Json;
 
 enum State
 {
@@ -12,14 +16,14 @@ enum State
 
 public class MyContext : ApplicationContext
 {
+    private User? user;
+    private Form1 main_form;
 
-    private State _current;
-    private User? _user;
+    private FileWork source;
     public MyContext()
     {
         WelcomeScreen _welcome_screen;
         _welcome_screen = new WelcomeScreen();
-        _current = State.OnWelcomeScreen;
         _welcome_screen.FormClosing += FormClosingHandler;
         _welcome_screen.Show();
         
@@ -32,10 +36,27 @@ public class MyContext : ApplicationContext
             ExitThread();
             return;
         }
-        _user = (sender as WelcomeScreen).User;
-        _current = State.OnMainScreen;
-        Form1 main_form = new Form1();
+        user = (sender as WelcomeScreen).User;
+        InitMainScreen();
+    }
+
+    private void InitMainScreen()
+    {
+        main_form = new Form1();
+
+        source = new FileWork(user.Name+".json");
+        var a = JsonConvert.DeserializeObject<DataTable>(source.ReadAll());
+        main_form.SetDataSource(a);
+
         main_form.Show();
-        main_form.FormClosed += (o, e) => ExitThread();
+
+        main_form.FormClosing += MainScreenClosingHandler;
+    }
+
+    private void MainScreenClosingHandler(object? sender, FormClosingEventArgs e)
+    {
+        main_form.EndEdit();
+        source.Rewrite(JsonConvert.SerializeObject(main_form.GetDataSource(), Formatting.Indented));
+        ExitThread();
     }
 }

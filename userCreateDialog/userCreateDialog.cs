@@ -1,7 +1,10 @@
 ﻿namespace Project.userCreateDialog;
 
 using LibrarySim.FileWork;
+using Newtonsoft.Json;
 using Project.User;
+using System.Data;
+using System.Text.Json;
 using userDialog;
 
 public partial class userCreateDialog : userDialog
@@ -53,6 +56,18 @@ public partial class userCreateDialog : userDialog
 
         users_file.Write(u.ToString() + "\n");
         User = u;
+
+        FileWork json = new FileWork(u.Name + ".json");
+
+        DataTable dataTable = new DataTable();
+
+        dataTable.Columns.Add("MyName", typeof(string));
+        dataTable.Columns.Add("Value", typeof(int));
+        dataTable.Columns.Add("Desc", typeof(string));
+
+        dataTable.Rows.Add("All", 0, "");
+
+        json.Write(JsonConvert.SerializeObject(dataTable, Formatting.Indented));
 
         Close();
     }

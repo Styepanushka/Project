@@ -28,46 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            vScrollBar1 = new VScrollBar();
-            groupBox1 = new GroupBox();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // vScrollBar1
+            // dataGridView1
             // 
-            vScrollBar1.Location = new Point(9, 9);
-            vScrollBar1.Maximum = 30;
-            vScrollBar1.Minimum = 1;
-            vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.ScaleScrollBarForDpiChange = false;
-            vScrollBar1.Size = new Size(25, 432);
-            vScrollBar1.TabIndex = 0;
-            vScrollBar1.Value = 1;
-            vScrollBar1.Scroll += vScrollBar1_Scroll;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Location = new Point(37, 9);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(614, 432);
-            groupBox1.TabIndex = 1;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "All";
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(37, 9);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(345, 383);
+            dataGridView1.TabIndex = 1;
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
+            dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(groupBox1);
-            Controls.Add(vScrollBar1);
+            Controls.Add(dataGridView1);
             Name = "Form1";
             Text = "Form1";
+            FormClosing += Form1_FormClosing;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private VScrollBar vScrollBar1;
-        private GroupBox groupBox1;
+        private DataGridView dataGridView1;
     }
 }

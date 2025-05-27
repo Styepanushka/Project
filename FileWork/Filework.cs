@@ -40,4 +40,9 @@ internal class FileWork : IFileWork
         _allData += text;
         File.WriteAllText(path, _allData);
     }
+
+    public void Rewrite(string text)
+    {
+        File.WriteAllText(path, text);
+    }
 }

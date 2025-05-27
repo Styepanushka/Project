@@ -45,57 +45,35 @@ partial class Form1
         // button1
         // 
         button1.Location = new Point(114, 80);
-        button1.Name = "button1";
-        button1.Size = new Size(73, 29);
-        button1.TabIndex = 9;
-        button1.Text = "Confirm";
-        button1.UseVisualStyleBackColor = true;
-        button1.Click += this.button1_Click;
+        button1.Text = "Подтвердить";
+        button1.Click += button1_Click;
         // 
         // label2
         // 
-        label2.AutoSize = true;
         label2.Location = new Point(23, 51);
-        label2.Name = "label2";
-        label2.Size = new Size(57, 15);
-        label2.TabIndex = 8;
-        label2.Text = "Password";
+        label2.Size = new Size(49, 15);
+        label2.Text = "Пароль";
         // 
         // textBox2
         // 
         textBox2.Location = new Point(87, 51);
-        textBox2.Name = "textBox2";
-        textBox2.Size = new Size(100, 23);
-        textBox2.TabIndex = 7;
         // 
         // label1
         // 
-        label1.AutoSize = true;
         label1.Location = new Point(23, 8);
-        label1.Name = "label1";
-        label1.Size = new Size(39, 15);
-        label1.TabIndex = 6;
-        label1.Text = "Name";
+        label1.Size = new Size(31, 15);
+        label1.Text = "Имя";
         // 
         // textBox1
         // 
         textBox1.Location = new Point(87, 8);
-        textBox1.Name = "textBox1";
-        textBox1.Size = new Size(100, 23);
-        textBox1.TabIndex = 5;
         // 
         // Form1
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(210, 116);
-        Controls.Add(button1);
-        Controls.Add(label2);
-        Controls.Add(textBox2);
-        Controls.Add(label1);
-        Controls.Add(textBox1);
         Name = "Form1";
-        Text = "Form1";
         ResumeLayout(false);
         PerformLayout();
     }

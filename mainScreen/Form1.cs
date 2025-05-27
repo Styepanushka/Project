@@ -1,41 +1,66 @@
 ﻿namespace Project.mainScreen;
 
-using LibrarySim.FileWork;
-using Project.Statya;
-using Project.User;
+using System.Data;
 
 public partial class Form1 : Form
 {
-    private readonly int _size = 20;
     public Form1()
     {
         InitializeComponent();
 
-        for(int i= 0 ; i < 30; i++)
-        {
-            Label a = new Label();
-            a.Text = i.ToString();
-            a.Location = new Point(0, i * _size);
-
-            groupBox1.Controls.Add(a);
-        }
-
-        if(groupBox1.Controls.Count >= 20)
-            vScrollBar1.Maximum = (groupBox1.Controls.Count - 20) * _size;
-        else vScrollBar1.Maximum = 0;
-
-        FileWork f = new FileWork("a.txt");
-
-        ComboStatya c = new ComboStatya(f.ReadAll());
+        dataGridView1.DataSource = new BindingSource();
     }
 
-    private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+
+    private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
-        int c = -groupBox1.Controls.Count;
-        foreach(Control control in groupBox1.Controls)
+        if (e.Value == null) return;
+        if (e.ColumnIndex != 1) return;
+        if (e.Value.ToString() == "") return;
+        int? i = int.Parse(e.Value.ToString());
+        if (i > 0)
         {
-            control.Location = new Point(0, (vScrollBar1.Value + c++) * -_size);
-            
+            e.CellStyle.ForeColor = Color.Blue;
         }
+        else if (int.Parse(e.Value.ToString()) < 0)
+        {
+            e.CellStyle.ForeColor = Color.Red;
+        }
+    }
+
+    public void SetDataSource(DataTable dt)
+    {
+        (dataGridView1.DataSource as BindingSource).DataSource = dt;
+
+        dataGridView1.Columns[0].HeaderText = "Название";
+        dataGridView1.Columns[1].HeaderText = "Сумма";
+        dataGridView1.Columns[2].HeaderText = "Описание";
+
+        dataGridView1.EndEdit();
+
+    }
+
+    public DataTable GetDataSource()
+    {
+        return ((dataGridView1.DataSource as BindingSource).DataSource as DataTable);
+    }
+
+    private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        (dataGridView1.DataSource as BindingSource).EndEdit();
+    }
+
+    private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+    {
+        dataGridView1.EndEdit();
+        var a = (dataGridView1.DataSource as BindingSource);
+        a?.EndEdit();
+    }
+
+    public void EndEdit()
+    {
+        dataGridView1.EndEdit();
+        var a = (dataGridView1.DataSource as BindingSource);
+        a?.EndEdit();
     }
 }

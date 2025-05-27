@@ -34,11 +34,11 @@ partial class WelcomeScreen : Form
         // 
         // createUser
         // 
-        createUser.Location = new Point(338, 335);
+        createUser.Location = new Point(319, 328);
         createUser.Name = "createUser";
-        createUser.Size = new Size(87, 41);
+        createUser.Size = new Size(119, 41);
         createUser.TabIndex = 3;
-        createUser.Text = "Create new\r\nuser";
+        createUser.Text = "Создать нового пользователя";
         createUser.UseVisualStyleBackColor = true;
         createUser.Click += createUser_Click;
         // 
@@ -48,7 +48,7 @@ partial class WelcomeScreen : Form
         start.Name = "start";
         start.Size = new Size(94, 31);
         start.TabIndex = 4;
-        start.Text = "Enter";
+        start.Text = "Вход";
         start.UseVisualStyleBackColor = true;
         start.Click += start_Click;
         // 
